@@ -22,7 +22,7 @@ fi
 #     tar -xzf WeatherEvents_Aug16_Dec20_Publish.tar.gz
 # fi
 
-generate output
+echo "generate output"
 if [ ! -d "${dir}/.venv" ]
     then
         python3.12 -m venv .venv
@@ -35,6 +35,8 @@ else
     # pip --no-cache-dir uninstall tensorflow
     pip --no-cache-dir install 'tensorflow[and-cuda]'
 fi
+
+cd src
 
 echo "Input being created"
 jupyter nbconvert --execute --to notebook --inplace 1_CreateInput.ipynb
