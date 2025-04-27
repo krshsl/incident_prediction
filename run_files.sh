@@ -1,7 +1,8 @@
 #! /bin/bash -l
 #SBATCH --output=logfile
 
-cd /common/home/ks2025/rutgers/cs551/final_project
+dir=/common/home/ks2025/rutgers/cs551/final_project
+cd $dir
 
 if [ ! -f TrafficEvents_Aug16_Dec20_Publish.tar.gz ]; then
     echo downloading traffic events data...
@@ -21,9 +22,8 @@ fi
 #     tar -xzf WeatherEvents_Aug16_Dec20_Publish.tar.gz
 # fi
 
-
-# generate output
-if [ ! -d "/common/home/ks2025/rutgers/cs551/final_project/.venv" ]
+generate output
+if [ ! -d "${dir}/.venv" ]
     then
         python3.12 -m venv .venv
         source .venv/bin/activate
@@ -31,7 +31,7 @@ if [ ! -d "/common/home/ks2025/rutgers/cs551/final_project/.venv" ]
         pip --no-cache-dir install 'tensorflow[and-cuda]'
         pip --no-cache-dir install -r requirements.txt
 else
-    source /common/home/ks2025/rutgers/cs551/final_project/.venv/bin/activate
+    source ${dir}/.venv/bin/activate
     # pip --no-cache-dir uninstall tensorflow
     pip --no-cache-dir install 'tensorflow[and-cuda]'
 fi
