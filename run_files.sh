@@ -27,12 +27,12 @@ if [ ! -d "${dir}/.venv" ]
     then
         python3.12 -m venv .venv
         source .venv/bin/activate
-        # pip --no-cache-dir uninstall tensorflow
+        pip --no-cache-dir uninstall tensorflow -y # reinstall just to ensure you have right version!!!
         pip --no-cache-dir install 'tensorflow[and-cuda]'
         pip --no-cache-dir install -r requirements.txt
 else
     source ${dir}/.venv/bin/activate
-    # pip --no-cache-dir uninstall tensorflow
+    pip --no-cache-dir uninstall tensorflow -y # reinstall just to ensure you have right version!!!
     pip --no-cache-dir install 'tensorflow[and-cuda]'
 fi
 
@@ -44,5 +44,6 @@ jupyter nbconvert --execute --to notebook --inplace 1_CreateInput.ipynb
 echo "Output being predicted"
 jupyter nbconvert --execute --to notebook --inplace 2_PredictEvent.ipynb
 
-# pip --no-cache-dir uninstall tensorflow
 deactivate
+
+echo $dir
