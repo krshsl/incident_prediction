@@ -78,9 +78,9 @@ The model produces:
 - Trained model files (`.h5`) in the `data/output` directory
 - Classification reports in the `data/print` directory
 
-## License
+## Analysis
 
-This project uses data from public sources and is intended for educational purposes only.
+All of my analysis using the 3/1 year dataset can be found under the output folder
 
 ## Acknowledgements
 
